@@ -1,14 +1,17 @@
-#' @title tcsinvest
+#' @title Working with sandbox. Register account
 #'
-#' @description function
+#' @description Register sandbox account
 #'
-#' @param dataframe
-#'
-#' @return the valuet
-#'
+#' @param token token from Tinkoff account (only sandbox token)
+#' @details  If you need to create few money position, use this function for each position
+#' @note Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
+#' @author Vyacheslav Arbuzov
+#' @seealso \code{\link{sandboxDeleteAccount}}
 #' @examples
-#' cancelOrder(token)
+#' token = 'your_token_from_tcs_account'
+#' sandboxRegister(token)
 #' @export
+
 sandboxRegister = function(token = '')
 {
   headers = add_headers("accept" = "application/json","Authorization" = paste("Bearer",token),"Content-Type" = "application/json")

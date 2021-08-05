@@ -2,19 +2,30 @@
 % Please edit documentation in R/getQuotes.R
 \name{getQuotes}
 \alias{getQuotes}
-\title{tcsinvest}
+\title{Download current quotes for instrument}
 \usage{
 getQuotes(token = "", figi = "", sandbox = TRUE)
 }
 \arguments{
-\item{dataframe}{}
-}
-\value{
-the valuet
+\item{token}{token from Tinkoff account}
+
+\item{figi}{internal tinkoff code for instrument}
+
+\item{sandbox}{paper (TRUE) or live (FALSE) trading}
 }
 \description{
-function
+Makes a request to the server, and returns an data.table object with information about orderbook for selected instrument if successful.
+}
+\details{
+Information gets from orderbook function
+}
+\note{
+Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-cancelOrder(token)
+token = 'your_token_from_tcs_account'
+getQuotes(token,figi = 'BBG005HLTYH9')
+}
+\author{
+Vyacheslav Arbuzov
 }

@@ -1,0 +1,7 @@
+
+Changes in version 0.1.0
+-----------
+* first release of package
+* add functions for REST API Tinkoff with https://tinkoffcreditsystems.github.io/invest-openapi/swagger-ui/
+* add documentation to packages
+* released on 2021-08-05

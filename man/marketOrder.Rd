@@ -2,7 +2,7 @@
 % Please edit documentation in R/marketOrder.R
 \name{marketOrder}
 \alias{marketOrder}
-\title{tcsinvest}
+\title{Place market order}
 \usage{
 marketOrder(
   token = "",
@@ -13,14 +13,33 @@ marketOrder(
 )
 }
 \arguments{
-\item{dataframe}{}
-}
-\value{
-the valuet
+\item{token}{token from Tinkoff account}
+
+\item{figi}{internal tinkoff code for instrument}
+
+\item{direction}{"Buy" or "Sell"}
+
+\item{lots}{number of lots to buy}
+
+\item{sandbox}{paper (TRUE) or live (FALSE) trading}
 }
 \description{
-function
+this function will place your order in to account.
+}
+\details{
+As described by the official Tinkoff Investments documentation. If you want live trading, use sandbox=FALSE with live token
+}
+\note{
+Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-cancelOrder(token)
+token = 'your_token_from_tcs_account'
+# remember that this command will place limit order in your account !
+marketOrder(token,figi='BBG005HLTYH9',direction='Buy',lots=1,sandbox = TRUE)
+}
+\seealso{
+\code{\link{limitOrder}}
+}
+\author{
+Vyacheslav Arbuzov
 }

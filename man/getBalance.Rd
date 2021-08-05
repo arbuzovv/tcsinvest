@@ -2,19 +2,31 @@
 % Please edit documentation in R/getBalance.R
 \name{getBalance}
 \alias{getBalance}
-\title{tcsinvest}
+\title{Download Balance of account}
 \usage{
 getBalance(token = "", sandbox = TRUE)
 }
 \arguments{
-\item{dataframe}{}
-}
-\value{
-the valuet
+\item{token}{token from Tinkoff account}
+
+\item{sandbox}{paper (TRUE) or live (FALSE) trading}
 }
 \description{
-function
+Makes a request to the server, and returns an data.table object with information about available balance if successful.
+}
+\details{
+As described by the official Tinkoff Investments documentation
+}
+\note{
+Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-cancelOrder(token)
+token = 'your_token_from_tcs_account'
+getBalance(token)
+}
+\seealso{
+\code{\link{getAccounts}} \code{\link{getPortfolio}}
+}
+\author{
+Vyacheslav Arbuzov
 }

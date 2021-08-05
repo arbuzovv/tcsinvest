@@ -1,15 +1,20 @@
-#' @title tcsinvest
+#' @title Working with sandbox. Set Positions
 #'
-#' @description function
+#' @description Set positions for sandbox account
 #'
-#' @param dataframe
-#'
-#' @return the valuet
-#'
+#' @param token token from Tinkoff account
+#' @param balance balance of figi instrument in sandbox account
+#' @param figi internal tinkoff code for instrument
+#' @details  If you need to create few money position, use this function for each position
+#' @note Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
+#' @author Vyacheslav Arbuzov
+#' @seealso \code{\link{sandboxDeletePositions}}
 #' @examples
-#' cancelOrder(token)
+#' token = 'your_token_from_tcs_account'
+#' sandboxPositions(token,balance = 100,figi = 'BBG000BMFNP4')
 #' @export
-sandboxPositions = function(token = '',balance=NULL,figi='')
+
+sandboxPositions = function(token = '',balance = NULL,figi = '')
 {
   headers = add_headers("accept" = "application/json","Authorization" = paste("Bearer",token),"Content-Type" = "application/json")
   data = paste0('{\"figi\":\"',figi,'\",\"balance\":',balance,'}')

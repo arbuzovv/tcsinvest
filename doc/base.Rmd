@@ -1,0 +1,37 @@
+---
+title: "Introduction to Tinkoff Invest API (tcsinvest)"
+output: rmarkdown::html_vignette
+description: >
+  Start here if this is your first time using tcsinvest. You'll learn the basic   
+  methods of working with Tinkoff Invest API, the most important function for trading 
+  which allows you to manage your real portfolio
+vignette: >
+  %\VignetteIndexEntry{Introduction to tcsinvest}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+When working with data you must:
+
+* Figure out what you want to do.
+
+* Describe those tasks in the form of a computer program.
+
+* Execute the program.
+
+
+## Single table verbs
+
+dplyr aims to provide a function for each basic verb of data manipulation
+
+
+```{r setup}
+library(tcsinvest)
+```

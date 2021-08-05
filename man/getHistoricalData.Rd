@@ -2,7 +2,7 @@
 % Please edit documentation in R/getHistoricalData.R
 \name{getHistoricalData}
 \alias{getHistoricalData}
-\title{tcsinvest}
+\title{Download Historical Bar Data}
 \usage{
 getHistoricalData(
   token = "",
@@ -14,14 +14,34 @@ getHistoricalData(
 )
 }
 \arguments{
-\item{dataframe}{}
-}
-\value{
-the valuet
+\item{token}{token from Tinkoff account}
+
+\item{figi}{internal tinkoff code for instrument}
+
+\item{from}{from what date download history}
+
+\item{to}{to what date download history}
+
+\item{interval}{timeframe of bars}
+
+\item{sandbox}{paper (TRUE) or live (FALSE) trading}
 }
 \description{
-function
+Makes a request to the server, and returns an data.table object with information about prices of instrument if successful.
+}
+\details{
+As described by the official Tinkoff Investments documentation
+}
+\note{
+Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-cancelOrder(token)
+token = 'your_token_from_tcs_account'
+getHistoricalData(token,figi = 'BBG005HLTYH9')
+}
+\seealso{
+\code{\link{getOrderBook}}
+}
+\author{
+Vyacheslav Arbuzov
 }

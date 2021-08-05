@@ -2,7 +2,7 @@
 % Please edit documentation in R/getOperations.R
 \name{getOperations}
 \alias{getOperations}
-\title{tcsinvest}
+\title{Download all operations in account}
 \usage{
 getOperations(
   token = "",
@@ -12,14 +12,30 @@ getOperations(
 )
 }
 \arguments{
-\item{dataframe}{}
-}
-\value{
-the valuet
+\item{token}{token from Tinkoff account}
+
+\item{from}{from what date download history}
+
+\item{to}{to what date download history}
+
+\item{sandbox}{paper (TRUE) or live (FALSE) trading}
 }
 \description{
-function
+Makes a request to the server, and returns a list object with information about all operation related with your account if successful.
+}
+\details{
+As described by the official Tinkoff Investments documentation
+}
+\note{
+Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-cancelOrder(token)
+token = 'your_token_from_tcs_account'
+getOperations(token)
+}
+\seealso{
+\code{\link{getOrders}} \code{\link{getTrades}}
+}
+\author{
+Vyacheslav Arbuzov
 }

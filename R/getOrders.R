@@ -1,14 +1,18 @@
-#' @title tcsinvest
+#' @title Download all live orders in account
 #'
-#' @description function
+#' @description Makes a request to the server, and returns a data.table object with information about all live orders related with your account if successful.
 #'
-#' @param dataframe
-#'
-#' @return the valuet
-#'
+#' @param token token from Tinkoff account
+#' @param sandbox paper (TRUE) or live (FALSE) trading
+#' @details  As described by the official Tinkoff Investments documentation
+#' @note Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
+#' @author Vyacheslav Arbuzov
+#' @seealso \code{\link{getTrades}} \code{\link{cancelOrder}}
 #' @examples
-#' cancelOrder(token)
+#' token = 'your_token_from_tcs_account'
+#' getOrders(token)
 #' @export
+
 getOrders = function(token = '',sandbox = TRUE)
 {
   headers = add_headers("accept" = "application/json","Authorization"=paste("Bearer",token))
@@ -19,6 +23,6 @@ getOrders = function(token = '',sandbox = TRUE)
     data_result = rbindlist(data_tmp$payload)
     return(data_result)
   }
-  if(etfs$status_code!=200)
+  if(raw_data$status_code!=200)
     return(structure('error in connection to tinkoff server', class = "try-error"))
 }

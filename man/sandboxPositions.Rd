@@ -2,19 +2,33 @@
 % Please edit documentation in R/sandboxPositions.R
 \name{sandboxPositions}
 \alias{sandboxPositions}
-\title{tcsinvest}
+\title{Working with sandbox. Set Positions}
 \usage{
 sandboxPositions(token = "", balance = NULL, figi = "")
 }
 \arguments{
-\item{dataframe}{}
-}
-\value{
-the valuet
+\item{token}{token from Tinkoff account}
+
+\item{balance}{balance of figi instrument in sandbox account}
+
+\item{figi}{internal tinkoff code for instrument}
 }
 \description{
-function
+Set positions for sandbox account
+}
+\details{
+If you need to create few money position, use this function for each position
+}
+\note{
+Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-cancelOrder(token)
+token = 'your_token_from_tcs_account'
+sandboxPositions(token,balance = 100,figi = 'BBG000BMFNP4')
+}
+\seealso{
+\code{\link{sandboxDeletePositions}}
+}
+\author{
+Vyacheslav Arbuzov
 }

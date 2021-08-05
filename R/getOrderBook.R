@@ -1,14 +1,20 @@
-#' @title tcsinvest
+#' @title Download current OrderBook snapshot
 #'
-#' @description function
+#' @description Makes a request to the server, and returns an data.table object with information about orderbook for selected instrument if successful.
 #'
-#' @param dataframe
-#'
-#' @return the valuet
-#'
+#' @param token token from Tinkoff account
+#' @param figi internal tinkoff code for instrument
+#' @param depth depth of orderbook, number of bids and asks
+#' @param sandbox paper (TRUE) or live (FALSE) trading
+#' @details  As described by the official Tinkoff Investments documentation
+#' @note Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
+#' @author Vyacheslav Arbuzov
+#' @seealso \code{\link{getHistoricalData}}
 #' @examples
-#' cancelOrder(token)
+#' token = 'your_token_from_tcs_account'
+#' getOrderBook(token,figi = 'BBG005HLTYH9',depth = 5)
 #' @export
+
 getOrderBook = function(token = '',figi='',depth=NULL,sandbox = TRUE)
 {
   headers = add_headers("accept" = "application/json","Authorization"=paste("Bearer",token))
@@ -20,9 +26,9 @@ getOrderBook = function(token = '',figi='',depth=NULL,sandbox = TRUE)
     data_asks = rbindlist(data_tmp$payload$asks,fill=TRUE)
     data_asks$quantity = -data_asks$quantity
     data_result = rbind(data_asks,data_bids)
-    data_result = data_result[order(price,decreasing = TRUE)]
+    data_result = data_result[order(data_result[,1],decreasing = TRUE)]
     return(data_result)
   }
-  if(etfs$status_code!=200)
+  if(raw_data$status_code!=200)
     return(structure('error in connection to tinkoff server', class = "try-error"))
 }

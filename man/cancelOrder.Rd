@@ -2,19 +2,30 @@
 % Please edit documentation in R/cancelOrder.R
 \name{cancelOrder}
 \alias{cancelOrder}
-\title{tcsinvest}
+\title{cancelOrder}
 \usage{
 cancelOrder(token = "", orderId = "", sandbox = TRUE)
 }
 \arguments{
-\item{dataframe}{}
-}
-\value{
-the valuet
+\item{token}{token from tinkoff}
+
+\item{orderId}{id of order from getOrders}
+
+\item{sandbox}{paper (TRUE) or live (FALSE) trading}
 }
 \description{
-function
+cancelOrder
+}
+\details{
+As described by the official Tinkoff Investments documentation
+}
+\note{
+Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-cancelOrder(token)
+token = 'your_token_from_tcs_account'
+cancelOrder(token,'')
+}
+\seealso{
+\code{\link{getOrders}}
 }

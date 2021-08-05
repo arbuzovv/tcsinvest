@@ -1,13 +1,17 @@
-#' @title tcsinvest
+#' @title Working with sandbox. Set balance
 #'
-#' @description function
+#' @description Set balance for sandbox account
 #'
-#' @param dataframe
-#'
-#' @return the valuet
-#'
+#' @param token token from Tinkoff account
+#' @param balance balance of money in sandbox account
+#' @param currency currency of sandbox account. "USD","EUR" or "RUB"
+#' @details  If you need to create few money position, use this function for each position
+#' @note Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
+#' @author Vyacheslav Arbuzov
+#' @seealso \code{\link{sandboxPositions}}
 #' @examples
-#' cancelOrder(token)
+#' token = 'your_token_from_tcs_account'
+#' sandboxBalance(token,balance = 10000,currency = 'USD')
 #' @export
 
 sandboxBalance = function(token = '',balance=NULL,currency='RUB')

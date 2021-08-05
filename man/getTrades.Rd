@@ -2,19 +2,43 @@
 % Please edit documentation in R/getTrades.R
 \name{getTrades}
 \alias{getTrades}
-\title{tcsinvest}
+\title{Download trades of current account}
 \usage{
-getTrades(token = "", from = Sys.Date() - 2, to = Sys.Date(), sandbox = TRUE)
+getTrades(
+  token = "",
+  from = Sys.Date() - 2,
+  to = Sys.Date(),
+  symbol_info = FALSE,
+  sandbox = TRUE
+)
 }
 \arguments{
-\item{dataframe}{}
-}
-\value{
-the valuet
+\item{token}{token from Tinkoff account}
+
+\item{from}{from what date download trades}
+
+\item{to}{to what date download trades}
+
+\item{symbol_info}{download full information about instruments of trades (4 additional requests)}
+
+\item{sandbox}{paper (TRUE) or live (FALSE) trading}
 }
 \description{
-function
+Makes a request to the server, and returns an data.table object with information about account trades if successful.
+}
+\details{
+parsing this data from getOperaions function
+}
+\note{
+Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-cancelOrder(token)
+token = 'your_token_from_tcs_account'
+getTrades(token)
+}
+\seealso{
+\code{\link{getOrders}}
+}
+\author{
+Vyacheslav Arbuzov
 }

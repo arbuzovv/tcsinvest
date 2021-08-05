@@ -2,19 +2,29 @@
 % Please edit documentation in R/sandboxDeletePositions.R
 \name{sandboxDeletePositions}
 \alias{sandboxDeletePositions}
-\title{tcsinvest}
+\title{Working with sandbox. Delete positions}
 \usage{
 sandboxDeletePositions(token = "")
 }
 \arguments{
-\item{dataframe}{}
-}
-\value{
-the valuet
+\item{token}{token from Tinkoff account (only sandbox token)}
 }
 \description{
-function
+Delete sandbox positions (all positions: stocks, etfs,bonds and money)
+}
+\details{
+If you need to create few money position, use this function for each position
+}
+\note{
+Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-cancelOrder(token)
+token = 'your_token_from_tcs_account'
+sandboxDeletePositions(token)
+}
+\seealso{
+\code{\link{sandboxPositions}}
+}
+\author{
+Vyacheslav Arbuzov
 }

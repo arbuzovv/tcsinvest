@@ -1,14 +1,19 @@
-#' @title tcsinvest
+#' @title Information for intrument by figi
 #'
-#' @description function
+#' @description Makes a request to the server, and returns an data.table object with information about instrument if successful.
 #'
-#' @param dataframe
-#'
-#' @return the valuet
-#'
+#' @param token token from Tinkoff account
+#' @param figi internal tinkoff code for instrument
+#' @param sandbox paper (TRUE) or live (FALSE) trading
+#' @details  As described by the official Tinkoff Investments documentation
+#' @note Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
+#' @author Vyacheslav Arbuzov
+#' @seealso \code{\link{getTickerInfo}}
 #' @examples
-#' cancelOrder(token)
+#' token = 'your_token_from_tcs_account'
+#' getSymbolInfo(token,figi = 'BBG005HLTYH9')
 #' @export
+
 getSymbolInfo = function(token = '',figi='',sandbox = TRUE)
 {
   headers = add_headers("accept" = "application/json","Authorization"=paste("Bearer",token))
@@ -19,6 +24,6 @@ getSymbolInfo = function(token = '',figi='',sandbox = TRUE)
     data_result = data.table(t(data_tmp$payload))
     return(data_result)
   }
-  if(etfs$status_code!=200)
+  if(raw_data$status_code!=200)
     return(structure('error in connection to tinkoff server', class = "try-error"))
 }

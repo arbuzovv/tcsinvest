@@ -2,19 +2,33 @@
 % Please edit documentation in R/sandboxBalance.R
 \name{sandboxBalance}
 \alias{sandboxBalance}
-\title{tcsinvest}
+\title{Working with sandbox. Set balance}
 \usage{
 sandboxBalance(token = "", balance = NULL, currency = "RUB")
 }
 \arguments{
-\item{dataframe}{}
-}
-\value{
-the valuet
+\item{token}{token from Tinkoff account}
+
+\item{balance}{balance of money in sandbox account}
+
+\item{currency}{currency of sandbox account. "USD","EUR" or "RUB"}
 }
 \description{
-function
+Set balance for sandbox account
+}
+\details{
+If you need to create few money position, use this function for each position
+}
+\note{
+Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-cancelOrder(token)
+token = 'your_token_from_tcs_account'
+sandboxBalance(token,balance = 10000,currency = 'USD')
+}
+\seealso{
+\code{\link{sandboxPositions}}
+}
+\author{
+Vyacheslav Arbuzov
 }
