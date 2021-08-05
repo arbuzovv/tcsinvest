@@ -1,2 +1,2 @@
 # tcsinvest
-Simple Rest Api for Tinkoff Investments
+Rest Api for Tinkoff Investments
