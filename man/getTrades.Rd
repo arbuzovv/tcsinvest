@@ -6,14 +6,17 @@
 \usage{
 getTrades(
   token = "",
-  from = Sys.Date() - 2,
+  live = FALSE,
+  from = Sys.Date() - 5,
   to = Sys.Date(),
   symbol_info = FALSE,
-  sandbox = TRUE
+  verbose = FALSE
 )
 }
 \arguments{
 \item{token}{token from Tinkoff account}
+
+\item{live}{live trading - TRUE or sandbox (paper) trading - FALSE (default)}
 
 \item{from}{from what date download trades}
 
@@ -21,7 +24,7 @@ getTrades(
 
 \item{symbol_info}{download full information about instruments of trades (4 additional requests)}
 
-\item{sandbox}{paper (TRUE) or live (FALSE) trading}
+\item{verbose}{display status of retrieval (default FALSE)}
 }
 \description{
 Makes a request to the server, and returns an data.table object with information about account trades if successful.
@@ -33,7 +36,7 @@ parsing this data from getOperaions function
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-token = 'your_token_from_tcs_account'
+token = 'your_sandbox_token_from_tcs_account'
 getTrades(token)
 }
 \seealso{

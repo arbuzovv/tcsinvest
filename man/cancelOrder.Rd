@@ -4,14 +4,14 @@
 \alias{cancelOrder}
 \title{cancelOrder}
 \usage{
-cancelOrder(token = "", orderId = "", sandbox = TRUE)
+cancelOrder(token = "", live = FALSE, orderId = "")
 }
 \arguments{
 \item{token}{token from tinkoff}
 
-\item{orderId}{id of order from getOrders}
+\item{live}{live trading - TRUE or sandbox (paper) trading - FALSE}
 
-\item{sandbox}{paper (TRUE) or live (FALSE) trading}
+\item{orderId}{id of order from getOrders}
 }
 \description{
 cancelOrder
@@ -23,8 +23,13 @@ As described by the official Tinkoff Investments documentation
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-token = 'your_token_from_tcs_account'
-cancelOrder(token,'')
+paper_token = 'your_sandbox_token_from_tcs_account'
+cancelOrder(paper_token,'your_order_id')
+
+live_token = 'your_live_token_from_tcs_account'
+# remember that this command will close your order in live account !
+cancelOrder(live_token,TRUE,'your_order_id')
+
 }
 \seealso{
 \code{\link{getOrders}}

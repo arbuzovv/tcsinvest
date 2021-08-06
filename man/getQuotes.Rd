@@ -4,14 +4,16 @@
 \alias{getQuotes}
 \title{Download current quotes for instrument}
 \usage{
-getQuotes(token = "", figi = "", sandbox = TRUE)
+getQuotes(token = "", live = FALSE, figi = "", verbose = FALSE)
 }
 \arguments{
 \item{token}{token from Tinkoff account}
 
+\item{live}{live trading - TRUE or sandbox (paper) trading - FALSE (default)}
+
 \item{figi}{internal tinkoff code for instrument}
 
-\item{sandbox}{paper (TRUE) or live (FALSE) trading}
+\item{verbose}{display status of retrieval (default FALSE)}
 }
 \description{
 Makes a request to the server, and returns an data.table object with information about orderbook for selected instrument if successful.
@@ -23,7 +25,7 @@ Information gets from orderbook function
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-token = 'your_token_from_tcs_account'
+token = 'your_sandbox_token_from_tcs_account'
 getQuotes(token,figi = 'BBG005HLTYH9')
 }
 \author{

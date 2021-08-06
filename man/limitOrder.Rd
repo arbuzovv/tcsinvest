@@ -6,15 +6,17 @@
 \usage{
 limitOrder(
   token = "",
+  live = FALSE,
   figi = "",
   direction = NULL,
   lots = NULL,
-  price = NULL,
-  sandbox = TRUE
+  price = NULL
 )
 }
 \arguments{
 \item{token}{token from Tinkoff account}
+
+\item{live}{live trading - TRUE or sandbox (paper) trading - FALSE (default)}
 
 \item{figi}{internal tinkoff code for instrument}
 
@@ -23,8 +25,6 @@ limitOrder(
 \item{lots}{number of lots to buy}
 
 \item{price}{price of limit order}
-
-\item{sandbox}{paper (TRUE) or live (FALSE) trading}
 }
 \description{
 this function will place your order in to account.
@@ -36,9 +36,12 @@ As described by the official Tinkoff Investments documentation. If you want live
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-token = 'your_token_from_tcs_account'
-# remember that this command will place limit order in your account !
-limitOrder(token,figi='BBG005HLTYH9',direction='Buy',lots=1,price=100,sandbox = TRUE)
+paper_token = 'your_sandbox_token_from_tcs_account'
+limitOrder(paper_token,figi='BBG005HLTYH9',direction='Buy',lots=1,price=100)
+
+live_token = 'your_live_token_from_tcs_account'
+# remember that this command will place limit order in your live account !
+limitOrder(live_token,live=TRUE,figi='BBG005HLTYH9',direction='Buy',lots=1,price=100)
 }
 \seealso{
 \code{\link{marketOrder}}

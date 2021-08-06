@@ -4,12 +4,14 @@
 \alias{getCurrencies}
 \title{Download Currencies data}
 \usage{
-getCurrencies(token = "", sandbox = TRUE)
+getCurrencies(token = "", live = FALSE, verbose = FALSE)
 }
 \arguments{
 \item{token}{token from Tinkoff account}
 
-\item{sandbox}{paper (TRUE) or live (FALSE) trading}
+\item{live}{live trading - TRUE or sandbox (paper) trading - FALSE (default)}
+
+\item{verbose}{display status of retrieval (default FALSE)}
 }
 \description{
 Makes a request to the server, and returns an data.table object with information about available Currencies if successful.
@@ -21,7 +23,7 @@ As described by the official Tinkoff Investments documentation
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-token = 'your_token_from_tcs_account'
+token = 'your_sandbox_token_from_tcs_account'
 getCurrencies(token)
 }
 \seealso{

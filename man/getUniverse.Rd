@@ -4,12 +4,12 @@
 \alias{getUniverse}
 \title{Download universe data (stocks,bonds,etfs,currencies)}
 \usage{
-getUniverse(token = "", sandbox = TRUE)
+getUniverse(token = "", live = FALSE)
 }
 \arguments{
 \item{token}{token from Tinkoff account}
 
-\item{sandbox}{paper (TRUE) or live (FALSE) trading}
+\item{live}{live trading - TRUE or sandbox (paper) trading - FALSE (default)}
 }
 \description{
 Makes 4 request to the server, and returns an data.table object with information about available instruments in Tinkoff
@@ -21,7 +21,7 @@ this function for not from official list of functions.
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-token = 'your_token_from_tcs_account'
+token = 'your_sandbox_token_from_tcs_account'
 getUniverse(token)
 }
 \seealso{

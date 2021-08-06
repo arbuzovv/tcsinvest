@@ -4,14 +4,16 @@
 \alias{getTickerInfo}
 \title{Information for intrument by ticker}
 \usage{
-getTickerInfo(token = "", ticker = "", sandbox = TRUE)
+getTickerInfo(token = "", live = FALSE, ticker = "", verbose = FALSE)
 }
 \arguments{
 \item{token}{token from Tinkoff account}
 
+\item{live}{live trading - TRUE or sandbox (paper) trading - FALSE (default)}
+
 \item{ticker}{internal tinkoff code for instrument}
 
-\item{sandbox}{paper (TRUE) or live (FALSE) trading}
+\item{verbose}{display status of retrieval (default FALSE)}
 }
 \description{
 Makes a request to the server, and returns an data.table object with information about instrument if successful.
@@ -23,11 +25,11 @@ As described by the official Tinkoff Investments documentation
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-token = 'your_token_from_tcs_account'
+token = 'your_sandbox_token_from_tcs_account'
 getTickerInfo(token,'SBER')
 }
 \seealso{
-\code{\link{marketOrder}}
+\code{\link{getSymbolInfo}}
 }
 \author{
 Vyacheslav Arbuzov

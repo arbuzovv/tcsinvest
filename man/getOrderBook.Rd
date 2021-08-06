@@ -4,16 +4,24 @@
 \alias{getOrderBook}
 \title{Download current OrderBook snapshot}
 \usage{
-getOrderBook(token = "", figi = "", depth = NULL, sandbox = TRUE)
+getOrderBook(
+  token = "",
+  live = FALSE,
+  figi = "",
+  depth = NULL,
+  verbose = FALSE
+)
 }
 \arguments{
 \item{token}{token from Tinkoff account}
+
+\item{live}{live trading - TRUE or sandbox (paper) trading - FALSE (default)}
 
 \item{figi}{internal tinkoff code for instrument}
 
 \item{depth}{depth of orderbook, number of bids and asks}
 
-\item{sandbox}{paper (TRUE) or live (FALSE) trading}
+\item{verbose}{display status of retrieval (default FALSE)}
 }
 \description{
 Makes a request to the server, and returns an data.table object with information about orderbook for selected instrument if successful.
@@ -25,7 +33,7 @@ As described by the official Tinkoff Investments documentation
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-token = 'your_token_from_tcs_account'
+token = 'your_sandbox_token_from_tcs_account'
 getOrderBook(token,figi = 'BBG005HLTYH9',depth = 5)
 }
 \seealso{

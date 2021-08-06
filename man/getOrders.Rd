@@ -2,14 +2,29 @@
 % Please edit documentation in R/getOrders.R
 \name{getOrders}
 \alias{getOrders}
-\title{Download all live orders in account}
+\title{Download all orders in account}
 \usage{
-getOrders(token = "", sandbox = TRUE)
+getOrders(
+  token = "",
+  live = FALSE,
+  only_live_orders = TRUE,
+  raw_orders = FALSE,
+  from = Sys.Date() - 5,
+  to = Sys.Date() + 1
+)
 }
 \arguments{
 \item{token}{token from Tinkoff account}
 
-\item{sandbox}{paper (TRUE) or live (FALSE) trading}
+\item{live}{live trading - TRUE or sandbox (paper) trading - FALSE (default)}
+
+\item{only_live_orders}{select only live order or use history? (default TRUE)}
+
+\item{raw_orders}{get raw orders from server or use transformation? (default FALSE)}
+
+\item{from}{depth of trading history (from)}
+
+\item{to}{depth of trading history (to)}
 }
 \description{
 Makes a request to the server, and returns a data.table object with information about all live orders related with your account if successful.
@@ -21,7 +36,7 @@ As described by the official Tinkoff Investments documentation
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-token = 'your_token_from_tcs_account'
+token = 'your_sandbox_token_from_tcs_account'
 getOrders(token)
 }
 \seealso{

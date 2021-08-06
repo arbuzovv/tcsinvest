@@ -6,15 +6,18 @@
 \usage{
 getHistoricalData(
   token = "",
+  live = FALSE,
   figi = "",
   from = Sys.Date() - 2,
   to = Sys.Date(),
   interval = "hour",
-  sandbox = TRUE
+  verbose = FALSE
 )
 }
 \arguments{
 \item{token}{token from Tinkoff account}
+
+\item{live}{live trading - TRUE or sandbox (paper) trading - FALSE (default)}
 
 \item{figi}{internal tinkoff code for instrument}
 
@@ -24,7 +27,7 @@ getHistoricalData(
 
 \item{interval}{timeframe of bars}
 
-\item{sandbox}{paper (TRUE) or live (FALSE) trading}
+\item{verbose}{display status of retrieval (default FALSE)}
 }
 \description{
 Makes a request to the server, and returns an data.table object with information about prices of instrument if successful.
@@ -36,7 +39,7 @@ As described by the official Tinkoff Investments documentation
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
-token = 'your_token_from_tcs_account'
+token = 'your_sandbox_token_from_tcs_account'
 getHistoricalData(token,figi = 'BBG005HLTYH9')
 }
 \seealso{
