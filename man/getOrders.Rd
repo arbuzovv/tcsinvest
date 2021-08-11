@@ -10,7 +10,8 @@ getOrders(
   only_live_orders = TRUE,
   raw_orders = FALSE,
   from = Sys.Date() - 5,
-  to = Sys.Date() + 1
+  to = Sys.Date(),
+  time_transform = TRUE
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ getOrders(
 \item{from}{depth of trading history (from)}
 
 \item{to}{depth of trading history (to)}
+
+\item{time_transform}{trasform time from string to POSIXct}
 }
 \description{
 Makes a request to the server, and returns a data.table object with information about all live orders related with your account if successful.
@@ -36,8 +39,9 @@ As described by the official Tinkoff Investments documentation
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
+live = FALSE
 token = 'your_sandbox_token_from_tcs_account'
-getOrders(token)
+getOrders(token,live)
 }
 \seealso{
 \code{\link{getTrades}} \code{\link{cancelOrder}}

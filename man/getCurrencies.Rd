@@ -23,8 +23,9 @@ As described by the official Tinkoff Investments documentation
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
+live = FALSE
 token = 'your_sandbox_token_from_tcs_account'
-getCurrencies(token)
+getCurrencies(token,live)
 }
 \seealso{
 \code{\link{getETFs}} \code{\link{getBonds}} \code{\link{getStocks}}

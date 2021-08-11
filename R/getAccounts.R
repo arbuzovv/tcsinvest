@@ -10,8 +10,9 @@
 #' @author Vyacheslav Arbuzov
 #' @seealso \code{\link{getBalance}} \code{\link{getPortfolio}}
 #' @examples
+#' live = FALSE
 #' token = 'your_sandbox_token_from_tcs_account'
-#' getAccounts(token)
+#' getAccounts(token,live)
 #' @export
 
 getAccounts = function(token = '', live = FALSE, verbose = FALSE)

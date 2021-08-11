@@ -21,8 +21,9 @@ this function for not from official list of functions.
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
+live = FALSE
 token = 'your_sandbox_token_from_tcs_account'
-getUniverse(token)
+getUniverse(token,live)
 }
 \seealso{
 \code{\link{getCurrencies}} \code{\link{getBonds}} \code{\link{getETFs}} \code{\link{getStocks}}

@@ -7,22 +7,24 @@
 #' @param from from what date download trades
 #' @param to to what date download trades
 #' @param symbol_info download full information about instruments of trades (4 additional requests)
+#' @param time_transform trasform time from string to POSIXct
 #' @param verbose display status of retrieval (default FALSE)
 #' @details  parsing this data from getOperaions function
 #' @note Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 #' @author Vyacheslav Arbuzov
 #' @seealso \code{\link{getOrders}}
 #' @examples
+#' live = FALSE
 #' token = 'your_sandbox_token_from_tcs_account'
-#' getTrades(token)
+#' getTrades(token,live)
 #' @export
 
-getTrades = function(token = '', live = FALSE, from = Sys.Date()-5, to = Sys.Date(), symbol_info = FALSE, verbose = FALSE)
+getTrades = function(token = '', live = FALSE, from = Sys.Date()-5, to = Sys.Date(), symbol_info = FALSE, time_transform = TRUE, verbose = FALSE)
 {
   headers = add_headers("accept" = "application/json","Authorization"=paste("Bearer",token))
   raw_data = GET(paste0('https://api-invest.tinkoff.ru/openapi/',ifelse(live == FALSE,'sandbox/',''),
-                        'operations?from=',from,'T21%3A00%3A00%2B03%3A00',
-                        '&to=',to,'T21%3A00%3A00%2B03%3A00'), headers)
+                        'operations?from=',from,'T00%3A00%3A00%2B03%3A00',
+                        '&to=',to,'T23%3A59%3A59%2B03%3A00'), headers)
   if(raw_data$status_code==200)
   {
     data_tmp <- content(raw_data, as = "parsed")
@@ -53,6 +55,11 @@ getTrades = function(token = '', live = FALSE, from = Sys.Date()-5, to = Sys.Dat
     {
     setcolorder(data_result, c(5,4,1:3,6:length(names(data_result))))
     if(symbol_info) data_result = merge(data_result,getUniverse(token,live)[,-'currency'],by='figi',all.x = TRUE)
+    if(time_transform)
+      {
+      data_result$date = as.POSIXct(strptime(data_result$date,'%Y-%m-%dT%H:%M:%S'))
+      data_result$executed.date = as.POSIXct(strptime(data_result$executed.date,'%Y-%m-%dT%H:%M:%S'))
+      }
     }
     return(data_result)
   }

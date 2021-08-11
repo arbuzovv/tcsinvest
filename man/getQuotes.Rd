@@ -26,8 +26,9 @@ Also gets list of availible status of instrument: break_in_trading, normal_tradi
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
+live = FALSE
 token = 'your_sandbox_token_from_tcs_account'
-getQuotes(token,figi = 'BBG005HLTYH9')
+getQuotes(token,live,figi = 'BBG005HLTYH9')
 }
 \author{
 Vyacheslav Arbuzov

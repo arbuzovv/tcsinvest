@@ -10,8 +10,9 @@
 #' @author Vyacheslav Arbuzov
 #' @seealso \code{\link{getTrades}} \code{\link{getOrders}}
 #' @examples
+#' live = FALSE
 #' token = 'your_sandbox_token_from_tcs_account'
-#' getPortfolio(token)
+#' getPortfolio(token,live)
 #' @export
 
 getPortfolio= function(token = '', live = FALSE, verbose = FALSE)

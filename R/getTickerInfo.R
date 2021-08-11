@@ -11,8 +11,9 @@
 #' @author Vyacheslav Arbuzov
 #' @seealso \code{\link{getSymbolInfo}}
 #' @examples
+#' live = FALSE
 #' token = 'your_sandbox_token_from_tcs_account'
-#' getTickerInfo(token,'SBER')
+#' getTickerInfo(token,live,'SBER')
 #' @export
 
 getTickerInfo = function(token = '', live = FALSE, ticker = '', verbose = FALSE)

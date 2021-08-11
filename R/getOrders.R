@@ -8,16 +8,18 @@
 #' @param raw_orders get raw orders from server or use transformation? (default FALSE)
 #' @param from depth of trading history (from)
 #' @param to depth of trading history (to)
+#' @param time_transform trasform time from string to POSIXct
 #' @details  As described by the official Tinkoff Investments documentation
 #' @note Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 #' @author Vyacheslav Arbuzov
 #' @seealso \code{\link{getTrades}} \code{\link{cancelOrder}}
 #' @examples
+#' live = FALSE
 #' token = 'your_sandbox_token_from_tcs_account'
-#' getOrders(token)
+#' getOrders(token,live)
 #' @export
 
-getOrders = function(token = '', live = FALSE, only_live_orders = TRUE, raw_orders = FALSE ,from=Sys.Date()-5, to=Sys.Date()+1)
+getOrders = function(token = '', live = FALSE, only_live_orders = TRUE, raw_orders = FALSE ,from = Sys.Date()-5, to = Sys.Date(), time_transform = TRUE)
 {
   headers = add_headers("accept" = "application/json","Authorization"=paste("Bearer",token))
   raw_data = GET(paste0('https://api-invest.tinkoff.ru/openapi/',ifelse(live == FALSE,'sandbox/',''),'orders'), headers)
@@ -43,14 +45,14 @@ getOrders = function(token = '', live = FALSE, only_live_orders = TRUE, raw_orde
   if(only_live_orders == FALSE)
   {
     raw_data2 = GET(paste0('https://api-invest.tinkoff.ru/openapi/',ifelse(live == FALSE,'sandbox/',''),
-                          'operations?from=',from,'T21%3A00%3A00%2B03%3A00',
-                          '&to=',to,'T21%3A00%3A00%2B03%3A00'), headers)
+                          'operations?from=',from,'T00%3A00%3A00%2B03%3A00',
+                          '&to=',to,'T23%3A59%3A59%2B03%3A00'), headers)
     if(raw_data2$status_code==200)
     {
       data_tmp2 <- content(raw_data2, as = "parsed")
       num_operations = length(data_tmp2$payload$operations)
       old_orders = NA
-      if(num_operations==0) return(old_orders)
+      if(num_operations==0) return(live_orders)
       for(i in 1:num_operations)
         if(data_tmp2$payload$operations[[i]]$operationType %in% c('Sell','Buy'))
         {
@@ -71,6 +73,7 @@ getOrders = function(token = '', live = FALSE, only_live_orders = TRUE, raw_orde
     if(length(live_orders)==0) all_orders = old_orders
     setcolorder(all_orders, c(10,1,12,3,2,5:8,4,11,9))
     all_orders = all_orders[order(all_orders[,1],decreasing = TRUE)]
+    if(time_transform) all_orders$date = as.POSIXct(strptime(all_orders$date,'%Y-%m-%dT%H:%M:%S'))
     return(all_orders)
   }
 }

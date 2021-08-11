@@ -11,8 +11,9 @@
 #' @seealso \code{\link{getCurrencies}} \code{\link{getBonds}} \code{\link{getETFs}}
 #' @import data.table
 #' @examples
+#' live = FALSE
 #' token = 'your_sandbox_token_from_tcs_account'
-#' getStocks(token)
+#' getStocks(token,live)
 #' @export
 
 getStocks = function(token = '', live = FALSE, verbose = FALSE)

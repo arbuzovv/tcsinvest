@@ -7,7 +7,7 @@
 getOperations(
   token = "",
   live = FALSE,
-  from = Sys.Date() - 2,
+  from = Sys.Date() - 5,
   to = Sys.Date(),
   verbose = FALSE
 )
@@ -33,8 +33,9 @@ As described by the official Tinkoff Investments documentation
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
+live = FALSE
 token = 'your_sandbox_token_from_tcs_account'
-getOperations(token)
+getOperations(token,live)
 }
 \seealso{
 \code{\link{getOrders}} \code{\link{getTrades}}

@@ -11,6 +11,7 @@ getHistoricalData(
   from = Sys.Date() - 2,
   to = Sys.Date(),
   interval = "hour",
+  time_transform = TRUE,
   verbose = FALSE
 )
 }
@@ -27,6 +28,8 @@ getHistoricalData(
 
 \item{interval}{timeframe of bars (availible "1min","2min","3min","5min","10min","15min","30min","hour","2hour","4hour","day","week","month")}
 
+\item{time_transform}{trasform time from string to POSIXct}
+
 \item{verbose}{display status of retrieval (default FALSE)}
 }
 \description{
@@ -39,8 +42,9 @@ As described by the official Tinkoff Investments documentation
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
+live = FALSE
 token = 'your_sandbox_token_from_tcs_account'
-getHistoricalData(token,figi = 'BBG005HLTYH9')
+getHistoricalData(token,live,figi = 'BBG005HLTYH9')
 }
 \seealso{
 \code{\link{getOrderBook}}

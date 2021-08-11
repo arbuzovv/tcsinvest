@@ -10,8 +10,9 @@
 #' @author Vyacheslav Arbuzov
 #' @seealso \code{\link{getETFs}} \code{\link{getBonds}} \code{\link{getStocks}}
 #' @examples
+#' live = FALSE
 #' token = 'your_sandbox_token_from_tcs_account'
-#' getCurrencies(token)
+#' getCurrencies(token,live)
 #' @export
 
 getCurrencies = function(token = '', live = FALSE, verbose = FALSE)

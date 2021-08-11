@@ -10,6 +10,7 @@ getTrades(
   from = Sys.Date() - 5,
   to = Sys.Date(),
   symbol_info = FALSE,
+  time_transform = TRUE,
   verbose = FALSE
 )
 }
@@ -24,6 +25,8 @@ getTrades(
 
 \item{symbol_info}{download full information about instruments of trades (4 additional requests)}
 
+\item{time_transform}{trasform time from string to POSIXct}
+
 \item{verbose}{display status of retrieval (default FALSE)}
 }
 \description{
@@ -36,8 +39,9 @@ parsing this data from getOperaions function
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
 }
 \examples{
+live = FALSE
 token = 'your_sandbox_token_from_tcs_account'
-getTrades(token)
+getTrades(token,live)
 }
 \seealso{
 \code{\link{getOrders}}

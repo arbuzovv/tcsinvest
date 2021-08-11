@@ -12,8 +12,9 @@
 #' @author Vyacheslav Arbuzov
 #' @seealso \code{\link{getHistoricalData}}
 #' @examples
+#' live = FALSE
 #' token = 'your_sandbox_token_from_tcs_account'
-#' getOrderBook(token,figi = 'BBG005HLTYH9',depth = 5)
+#' getOrderBook(token,live,figi = 'BBG005HLTYH9',depth = 5)
 #' @export
 
 getOrderBook = function(token = '', live = FALSE, figi = '', depth = NULL, verbose = FALSE)

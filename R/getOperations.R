@@ -12,11 +12,12 @@
 #' @author Vyacheslav Arbuzov
 #' @seealso \code{\link{getOrders}} \code{\link{getTrades}}
 #' @examples
+#' live = FALSE
 #' token = 'your_sandbox_token_from_tcs_account'
-#' getOperations(token)
+#' getOperations(token,live)
 #' @export
 
-getOperations = function(token = '', live = FALSE, from = Sys.Date()-2, to = Sys.Date(), verbose = FALSE)
+getOperations = function(token = '', live = FALSE, from = Sys.Date()-5, to = Sys.Date(), verbose = FALSE)
 {
   headers = add_headers("accept" = "application/json","Authorization"=paste("Bearer",token))
   raw_data = GET(paste0('https://api-invest.tinkoff.ru/openapi/',ifelse(live == FALSE,'sandbox/',''),
@@ -30,6 +31,7 @@ getOperations = function(token = '', live = FALSE, from = Sys.Date()-2, to = Sys
     if(length(data_tmp$payload$operations)>1)
       for(i in 2:length(data_tmp$payload$operations))
         data_result[i] =  list(rbindlist(data_tmp$payload$operations[i]))
+    if(length(data_tmp$payload$operations)!=0)
       return(data_result)
   }
   if(raw_data$status_code!=200)
