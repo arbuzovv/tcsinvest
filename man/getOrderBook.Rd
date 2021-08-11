@@ -19,7 +19,7 @@ getOrderBook(
 
 \item{figi}{internal tinkoff code for instrument}
 
-\item{depth}{depth of orderbook, number of bids and asks}
+\item{depth}{depth of orderbook, number of bids and asks (1 <= depth <= 20)}
 
 \item{verbose}{display status of retrieval (default FALSE)}
 }

@@ -5,7 +5,7 @@
 #' @param token token from Tinkoff account
 #' @param live live trading - TRUE or sandbox (paper) trading - FALSE (default)
 #' @param figi internal tinkoff code for instrument
-#' @param depth depth of orderbook, number of bids and asks
+#' @param depth depth of orderbook, number of bids and asks (1 <= depth <= 20)
 #' @param verbose display status of retrieval (default FALSE)
 #' @details  As described by the official Tinkoff Investments documentation
 #' @note Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.

@@ -25,7 +25,7 @@ getHistoricalData(
 
 \item{to}{to what date download history}
 
-\item{interval}{timeframe of bars}
+\item{interval}{timeframe of bars (availible "1min","2min","3min","5min","10min","15min","30min","hour","2hour","4hour","day","week","month")}
 
 \item{verbose}{display status of retrieval (default FALSE)}
 }

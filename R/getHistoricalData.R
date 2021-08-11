@@ -7,7 +7,7 @@
 #' @param figi internal tinkoff code for instrument
 #' @param from from what date download history
 #' @param to to what date download history
-#' @param interval timeframe of bars
+#' @param interval timeframe of bars (availible "1min","2min","3min","5min","10min","15min","30min","hour","2hour","4hour","day","week","month")
 #' @param verbose display status of retrieval (default FALSE)
 #' @details  As described by the official Tinkoff Investments documentation
 #' @note Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.

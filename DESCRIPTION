@@ -1,11 +1,11 @@
 Package: tcsinvest
 Type: Package
-Title: Rest API for Tinkoff Investments
-Version: 0.1.0
+Title: R API for Tinkoff Investments
+Version: 0.1.1
 Author: Vyacheslav Arbuzov[cre, aut]
 Maintainer: Vyacheslav Arbuzov <arbuzov1989@gmail.com>
-Imports: httr, data.table
-Description: Rest API functions for Tinkoff Investments.
+Imports: httr, data.table, jsonlite, websocket
+Description: API functions for Tinkoff Investments.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

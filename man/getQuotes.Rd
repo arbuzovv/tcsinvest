@@ -19,7 +19,8 @@ getQuotes(token = "", live = FALSE, figi = "", verbose = FALSE)
 Makes a request to the server, and returns an data.table object with information about orderbook for selected instrument if successful.
 }
 \details{
-Information gets from orderbook function
+Information gets from orderbook function.
+Also gets list of availible status of instrument: break_in_trading, normal_trading, not_available_for_trading, closing_auction, closing_period, discrete_auction, opening_period, trading_at_closing_auction_price
 }
 \note{
 Not for the faint of heart. All profits and losses related are yours and yours alone. If you don't like it, write it yourself.
