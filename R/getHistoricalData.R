@@ -20,7 +20,7 @@
 #' getHistoricalData(token,live,figi = 'BBG005HLTYH9')
 #' @export
 
-getHistoricalData = function(token = '', live = FALSE, figi = '', from = Sys.Date()-2, to = Sys.Date(), interval = 'hour', time_transform = TRUE, verbose = FALSE)
+getHistoricalData = function(token = '', live = FALSE, figi = '', from = Sys.Date()-1, to = Sys.Date(), interval = 'hour', time_transform = TRUE, verbose = FALSE)
 {
   headers = add_headers("accept" = "application/json","Authorization"=paste("Bearer",token))
   raw_data = GET(paste0('https://api-invest.tinkoff.ru/openapi/',ifelse(live == FALSE,'sandbox/',''),
@@ -32,7 +32,7 @@ getHistoricalData = function(token = '', live = FALSE, figi = '', from = Sys.Dat
   {
     data_tmp <- content(raw_data, as = "parsed")
     data_result = rbindlist(data_tmp$payload$candles)
-    if(time_transform) data_result$time = as.POSIXct(strptime(data_result$time,'%Y-%m-%dT%H:%M:%S'))
+    if(time_transform) data_result$time = as.POSIXct(strptime(data_result$time,'%Y-%m-%dT%H:%M:%S',tz='GMT'))
     return(data_result)
   }
   if(raw_data$status_code!=200)

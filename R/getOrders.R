@@ -73,7 +73,7 @@ getOrders = function(token = '', live = FALSE, only_live_orders = TRUE, raw_orde
     if(length(live_orders)==0) all_orders = old_orders
     setcolorder(all_orders, c(10,1,12,3,2,5:8,4,11,9))
     all_orders = all_orders[order(all_orders[,1],decreasing = TRUE)]
-    if(time_transform) all_orders$date = as.POSIXct(strptime(all_orders$date,'%Y-%m-%dT%H:%M:%S'))
+    if(time_transform) all_orders$date = as.POSIXct(strptime(all_orders$date,'%Y-%m-%dT%H:%M:%S',tz='GMT'))
     return(all_orders)
   }
 }

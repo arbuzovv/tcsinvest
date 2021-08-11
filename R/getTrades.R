@@ -57,8 +57,8 @@ getTrades = function(token = '', live = FALSE, from = Sys.Date()-5, to = Sys.Dat
     if(symbol_info) data_result = merge(data_result,getUniverse(token,live)[,-'currency'],by='figi',all.x = TRUE)
     if(time_transform)
       {
-      data_result$date = as.POSIXct(strptime(data_result$date,'%Y-%m-%dT%H:%M:%S'))
-      data_result$executed.date = as.POSIXct(strptime(data_result$executed.date,'%Y-%m-%dT%H:%M:%S'))
+      data_result$date = as.POSIXct(strptime(data_result$date,'%Y-%m-%dT%H:%M:%S',tz='GMT'))
+      data_result$executed.date = as.POSIXct(strptime(data_result$executed.date,'%Y-%m-%dT%H:%M:%S',tz='GMT'))
       }
     }
     return(data_result)
