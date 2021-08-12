@@ -8,7 +8,7 @@ getHistoricalData(
   token = "",
   live = FALSE,
   figi = "",
-  from = Sys.Date() - 2,
+  from = Sys.Date() - 1,
   to = Sys.Date(),
   interval = "hour",
   time_transform = TRUE,
