@@ -15,11 +15,17 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    runs-on: macOS-latest
+  R-CMD-check:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+
     strategy:
+      fail-fast: false
       matrix:
-        r-version: [3.5, 3.6]
+        config:
+          - {os: macOS-latest,   r: 'release'}
+          - {os: windows-latest, r: 'release'}
 
     steps:
       - uses: actions/checkout@v2
