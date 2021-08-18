@@ -4,7 +4,7 @@
 # tcsinvest <a href='https://tcsinvest.ru'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
-
+[![CRAN status](https://www.r-pkg.org/badges/version/tcsinvest)](https://cran.r-project.org/package=tcsinvest)
 [![R-CMD-check](https://github.com/arbuzovv/tcsinvest/actions/workflows/r.yml/badge.svg)](https://github.com/arbuzovv/tcsinvest/actions/workflows/r.yml)
 <!-- badges: end -->
 
